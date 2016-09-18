@@ -57,6 +57,7 @@ class PullReader implements EventReader {
     */
    public PullReader(XmlPullParser parser) {
       this.parser = parser;
+      this.parser.setFeature("http://xmlpull.org/v1/doc/features.html#relaxed",true);
    }
 
    /**
