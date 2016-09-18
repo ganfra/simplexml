@@ -24,6 +24,7 @@ import static org.xmlpull.v1.XmlPullParser.START_TAG;
 import static org.xmlpull.v1.XmlPullParser.TEXT;
 
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 /**
  * The <code>PullReader</code> is used to provide an event reader 
@@ -57,7 +58,11 @@ class PullReader implements EventReader {
     */
    public PullReader(XmlPullParser parser) {
       this.parser = parser;
-      this.parser.setFeature("http://xmlpull.org/v1/doc/features.html#relaxed",true);
+      try {
+            this.parser.setFeature("http://xmlpull.org/v1/doc/features.html#relaxed", true);
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
    }
 
    /**
